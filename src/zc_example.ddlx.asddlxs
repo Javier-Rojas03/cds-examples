@@ -1,0 +1,96 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Item',
+    typeNamePlural: 'Items',
+    title: { type: #STANDARD, value: 'Name' }
+  }
+}
+
+annotate entity ZC_EXAMPLE with
+{
+
+  @UI.facet: [{
+      id: 'GeneralData',
+      purpose: #STANDARD,
+      type: #COLLECTION,
+      label: 'Header',
+      position: 10
+    },
+    { 
+      type: #FIELDGROUP_REFERENCE,
+      position: 10,
+      targetQualifier: 'General1',
+      isSummary: true,
+      isPartOfPreview: true
+     },
+     {
+      type: #FIELDGROUP_REFERENCE,
+      position: 20,
+      targetQualifier: 'General2',
+      isSummary: true,
+      isPartOfPreview: true
+     }
+    ]
+  
+  @UI.lineItem: [
+    {
+      position: 90,
+      type: #FOR_ACTION,
+      dataAction: 'processRequest',
+      label: 'Process Request',
+      invocationGrouping: #CHANGE_SET,
+      importance: #HIGH
+    }
+  ]
+
+  @UI.identification: [
+    {
+      position: 90,
+      type: #FOR_ACTION,
+      dataAction: 'processRequest',
+      label: 'Process Request',
+      importance: #HIGH
+    }
+  ]
+  
+  @UI.hidden: true
+  ItemId;
+  
+  @UI: { lineItem: [ { position: 10, importance: #HIGH, label: 'Name' } ],
+         selectionField: [ { position: 10 } ],
+         fieldGroup: [ { qualifier: 'General1', position: 10, importance: #HIGH } ] }
+  @EndUserText:{ label: 'Name' }
+  @Search.defaultSearchElement: true
+  Name;
+
+  @UI: { lineItem: [ { position: 20, importance: #HIGH, label: 'Category' } ],
+         selectionField: [ { position: 20 } ],
+         fieldGroup: [ { qualifier: 'General1', position: 20, importance: #HIGH } ] }
+  @EndUserText:{ label: 'Category' }
+  Category;
+
+  @UI: { lineItem: [ { position: 30, importance: #HIGH, label: 'Price' } ],
+         selectionField: [ { position: 30 } ],
+         fieldGroup: [ { qualifier: 'General1', position: 30, importance: #HIGH } ] }
+  @EndUserText:{ label: 'Price' }
+  Price;
+
+  @UI: { lineItem: [ { position: 40, importance: #HIGH, label: 'Stock' } ],
+         selectionField: [ { position: 40 } ],
+         fieldGroup: [ { qualifier: 'General2', position: 10, importance: #HIGH } ] }
+  @EndUserText:{ label: 'Stock' }
+  Stock;
+
+  @UI: { lineItem: [ { position: 50, importance: #HIGH, label: 'Available' } ],
+         selectionField: [ { position: 50 } ],
+         fieldGroup: [ { qualifier: 'General2', position: 20, importance: #HIGH } ] }
+  @EndUserText:{ label: 'Available' }
+  Available;
+
+  @UI: { fieldGroup: [ { qualifier: 'General2', position: 30, importance: #HIGH } ] }
+  @EndUserText:{ label: 'Created At' }
+  Createdat;
+
+}

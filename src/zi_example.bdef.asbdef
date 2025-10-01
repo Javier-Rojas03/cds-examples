@@ -1,0 +1,54 @@
+managed implementation in class zbp_i_example unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_Example alias Example
+persistent table ztablex
+lock master
+total etag CreatedAt
+authorization master ( global )
+draft table ztablex_d
+etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  //Draft actions
+  draft action Activate optimized;
+  draft action Edit;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  field ( readonly, numbering : managed ) ItemId;
+
+  action processRequest
+    parameter ZAE_EXAMPLE
+    result [1] $self;
+
+  // Example: additional custom action
+  // action approve result [1] $self;
+
+  // Example: validation for mandatory fields or business rules
+  // validation validatePrice on save { field Price; }
+
+  // Example: determination to set values automatically
+  // determination setCreationDate on modify { create; }
+
+  // Example: association to another entity
+  // association _Category { create; }
+
+
+  mapping for ztablex
+    {
+      ItemId        = itemid;
+      Name          = name;
+      Category      = category;
+      Price         = price;
+      Stock         = stock;
+      Available     = available;
+      Createdat     = createdat;
+      LastChangedAt = lastchangedat;
+    }
+}

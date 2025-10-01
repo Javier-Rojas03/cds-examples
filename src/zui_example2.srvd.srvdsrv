@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service def'
+define service ZUI_EXAMPLE2 {
+  expose ZC_EXAMPLE;
+  expose ZCE_EXAMPLE;
+  expose ZI_LOW_EXAMPLE;
+}

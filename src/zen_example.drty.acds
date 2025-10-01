@@ -1,0 +1,12 @@
+@EndUserText.label: 'Enumerated type'
+define type ZEN_EXAMPLE : abap.int1 enum
+{
+  @EndUserText.label: 'Unassigned'
+  UNASSIGNED  = initial;
+  @EndUserText.label: 'Electronic'
+  ELECTRONICS =       1;
+  @EndUserText.label: 'Home'
+  HOME        =       2;
+  @EndUserText.label: 'Cloth'
+  CLOTHING    =       3;
+}

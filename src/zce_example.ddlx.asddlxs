@@ -1,0 +1,32 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+    typeName       : 'Demo',
+    typeNamePlural : 'Demos',
+    title          : { value: 'name' },         // correcto en minúsculas
+    description    : { value: 'info' }          // correcto en minúsculas
+  }
+
+annotate entity ZCE_EXAMPLE with
+{
+
+  @UI.facet: [
+    { id: 'General', purpose: #STANDARD, type: #COLLECTION, label: 'General', position: 10 },
+    { id: 'Main',    purpose: #STANDARD, parentId: 'General', type: #FIELDGROUP_REFERENCE,
+      label: 'Datos', targetQualifier: 'FGMain', position: 20 }
+  ]
+
+  @UI.lineItem:       [ { position: 10 } ]
+  @UI.identification: [ { position: 10 } ]
+  id;
+
+  @UI.selectionField: [ { position: 10 } ]
+  @UI.lineItem:       [ { position: 20 } ]
+  @UI.identification: [ { position: 20 } ]
+  @UI.fieldGroup:     [ { qualifier: 'FGMain', position: 10 } ]
+  name;
+
+  @UI.lineItem:       [ { position: 30 } ]
+  @UI.identification: [ { position: 30 } ]
+  @UI.fieldGroup:     [ { qualifier: 'FGMain', position: 20 } ]
+  info;
+}

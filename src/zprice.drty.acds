@@ -1,0 +1,2 @@
+@EndUserText.label: 'Simple Type'
+define type ZPrice: abap.dec(15,2);

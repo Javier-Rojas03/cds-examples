@@ -1,0 +1,4 @@
+define scalar function ZCL_EXAMPLE
+  with parameters
+    iv_price: abap.dec(15,2)
+  returns abap.dec(15,2);

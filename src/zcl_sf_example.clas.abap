@@ -1,0 +1,19 @@
+CLASS zcl_sf_example DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES if_amdp_marker_hdb.
+    CLASS-METHODS:
+      calculate FOR SCALAR FUNCTION zcl_example.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zcl_sf_example IMPLEMENTATION.
+  METHOD calculate BY DATABASE FUNCTION FOR HDB LANGUAGE SQLSCRIPT.
+    result = iv_price * 1.21;
+  endmethod.
+ENDCLASS.
+

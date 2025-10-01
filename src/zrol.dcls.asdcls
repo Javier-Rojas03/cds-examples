@@ -1,0 +1,11 @@
+@EndUserText.label: 'rol'
+@MappingRole: true
+define role ZROL {
+    grant
+        select
+            on
+               ZI_EXAMPLE
+                    where
+                        Name = 'ITEM';
+                        
+}
